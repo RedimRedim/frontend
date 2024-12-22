@@ -30,6 +30,7 @@ function LoginForm() {
         localStorage.setItem(REFRESH_TOKEN, response.data.refresh_token);
         localStorage.setItem("username", username);
         navigate("/");
+        alert(`welcome back ${username}`);
       }
     } catch (error) {
       if (error.response.status === 401) {

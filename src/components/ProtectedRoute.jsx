@@ -60,11 +60,19 @@ function ProtectedRoute({ children }) {
     auth();
   }, [location.pathname]); // Trigger on route changes
 
+  useEffect(() => {
+    if (isAuthorized === false) {
+      navigate("/login", {
+        state: { from: location },
+      });
+    }
+  });
+
   if (isAuthorized === null) {
     return <div>Loading...</div>;
   }
 
-  return isAuthorized ? children : null;
+  return isAuthorized ? children : false;
 }
 
 export default ProtectedRoute;

@@ -1,5 +1,10 @@
+html,
 body {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
+  width: 100%;
+  height: 100%;
 }
 
 .App {
@@ -13,7 +18,7 @@ body {
 .main-container {
   flex: 1; /* Occupies all remaining space */
   display: grid;
-  grid-template-columns: 0.3fr 2fr;
+  grid-template-columns: 0.2fr 2fr;
 }
 
 .main-content {
@@ -22,6 +27,6 @@ body {
 }
 
 button {
-  min-width: 50px !important;
-  min-height: 50px !important;
+  min-width: 50px;
+  min-height: 50px;
 }

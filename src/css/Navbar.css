@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: flex-start;
 }
+
 .navbar-links {
   display: flex;
   flex-direction: column;
@@ -10,6 +11,10 @@
   gap: 0.5em;
   width: 100%;
   color: rgb(255, 255, 255);
+}
+
+.navbar-content {
+  min-width: 120px;
 }
 
 .navbar-links a {
