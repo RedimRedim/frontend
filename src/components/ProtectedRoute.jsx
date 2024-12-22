@@ -42,6 +42,7 @@ function ProtectedRoute({ children }) {
     const accessToken = localStorage.getItem(ACCESS_TOKEN);
     if (!accessToken) {
       setIsAuthorized(false);
+      navigate("/login");
       return;
     }
 

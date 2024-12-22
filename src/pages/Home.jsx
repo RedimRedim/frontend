@@ -1,5 +1,5 @@
 import Navbar from "../components/Navbar";
-
+import UserInfoBar from "../components/UserInfoBar";
 function Home() {
   return (
     <>
@@ -8,8 +8,9 @@ function Home() {
           <div className="navbar-content">
             <Navbar />
           </div>
-          <main className="main-content">
-            <h3>Test</h3>
+          <main className="main-content ">
+            <UserInfoBar />
+            <h3>Home</h3>
           </main>
         </div>
       </div>

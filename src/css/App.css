@@ -17,7 +17,11 @@ body {
 }
 
 .main-content {
-  background-color: antiquewhite;
   padding: 1em;
   border: 1px solid black;
+}
+
+button {
+  min-width: 50px !important;
+  min-height: 50px !important;
 }

@@ -46,9 +46,10 @@ export const getFiles = async () => {
   }
 };
 
-export const updateFile = async (file) => {
+export const updateFile = async (db, file) => {
   try {
-    const response = await api.put(`/api/files/`, {
+    const response = await api.put(`/api/files`, {
+      db: db,
       filename: file,
     });
 
@@ -58,6 +59,7 @@ export const updateFile = async (file) => {
 
     return response;
   } catch (error) {
+    alert(error.response.data.detail);
     console.error("Error uploading files: ", error);
     throw error;
   }

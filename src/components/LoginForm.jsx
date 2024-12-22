@@ -23,46 +23,68 @@ function LoginForm() {
       setLoading(true);
 
       const response = await api.post("/login", data);
+      console.log(response);
+
       if (response.status === 200) {
         localStorage.setItem(ACCESS_TOKEN, response.data.access_token);
         localStorage.setItem(REFRESH_TOKEN, response.data.refresh_token);
+        localStorage.setItem("username", username);
         navigate("/");
       }
     } catch (error) {
-      alert(error);
-      return;
+      if (error.response.status === 401) {
+        alert("Wrong username or password");
+      } else {
+        alert(error);
+      }
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <form onSubmit={handleLoginSubmit}>
-      <h3>Login Page</h3>
-      <div className="mb-3 row">
-        <label htmlFor="username" className="col-sm-2 col-form-label">
-          Username
-        </label>
+    <>
+      <div id="loginContainer" className="container-fluid  bg-dark text-white">
+        <div className="row justify-content-center align-items-center vh-100">
+          <div className="col-md-6 col-lg-3">
+            <h3>Login Page</h3>
+            <form onSubmit={handleLoginSubmit}>
+              <div className="mb-3">
+                <label htmlFor="username" className="col-sm-2 col-form-label">
+                  Username
+                </label>
 
-        <div className="col-sm-10">
-          <input type="text" className="form-control" id="username"></input>
+                <div className="col-sm-10">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="username"
+                  ></input>
+                </div>
+              </div>
+
+              <div className="mb-3">
+                <label htmlFor="password" className="col-sm-2 col-form-label">
+                  Password
+                </label>
+
+                <div className="col-sm-10">
+                  <input
+                    type="password"
+                    className="form-control"
+                    id="password"
+                  ></input>
+                </div>
+              </div>
+
+              <button type="submit" className="btn btn-primary w-25">
+                Login
+              </button>
+            </form>
+          </div>
         </div>
       </div>
-
-      <div className="mb-3 row">
-        <label htmlFor="password" className="col-sm-2 col-form-label">
-          Password
-        </label>
-
-        <div className="col-sm-10">
-          <input type="password" className="form-control" id="password"></input>
-        </div>
-      </div>
-
-      <button type="submit" className="btn btn-primary">
-        Login
-      </button>
-    </form>
+    </>
   );
 }
 
